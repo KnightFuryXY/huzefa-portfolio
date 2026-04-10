@@ -458,7 +458,7 @@ h1, h2, h3, h4 {
 ========================================= */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
     gap: 30px;
 }
 
@@ -497,7 +497,7 @@ h1, h2, h3, h4 {
 ========================================= */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 350px), 1fr));
     gap: 30px;
 }
 
@@ -576,7 +576,7 @@ h1, h2, h3, h4 {
 ========================================= */
 .testimonials-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
     gap: 30px;
 }
 
@@ -720,6 +720,68 @@ h1, h2, h3, h4 {
     border-color: var(--primary);
     box-shadow: 0 0 10px var(--primary-glow);
     background: rgba(10, 10, 15, 0.8);
+}
+
+/* Success Notification Styles */
+.form-success-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 15, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.form-success-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.form-success-card {
+    background: rgba(20, 20, 25, 0.9);
+    border: 1px solid var(--border);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    transform: scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 240, 255, 0.1);
+}
+
+.form-success-overlay.active .form-success-card {
+    transform: scale(1);
+}
+
+.success-icon {
+    font-size: 4rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px var(--primary-glow));
+}
+
+.form-success-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.form-success-card p {
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+.btn-success-close {
+    width: 100%;
 }
 
 .submit-btn {
@@ -962,7 +1024,7 @@ footer {
 ========================================= */
 .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
     gap: 30px;
     align-items: center;
 }
@@ -995,6 +1057,27 @@ footer {
     font-size: 0.8rem;
     letter-spacing: 1px;
     text-transform: uppercase;
+}
+
+/* Special Deal Card */
+.deal-card {
+    background: rgba(255, 0, 255, 0.02) !important;
+    animation: borderPulse 4s infinite;
+}
+
+.deal-card h3 {
+    color: #ff00ff;
+}
+
+.deal-card .amount {
+    color: #ff00ff;
+    text-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+}
+
+@keyframes borderPulse {
+    0% { border-color: rgba(255, 0, 255, 0.3); box-shadow: 0 0 10px rgba(255, 0, 254, 0.05); }
+    50% { border-color: rgba(255, 0, 255, 1); box-shadow: 0 0 25px rgba(255, 0, 254, 0.2); }
+    100% { border-color: rgba(255, 0, 255, 0.3); box-shadow: 0 0 10px rgba(255, 0, 254, 0.05); }
 }
 
 .price-tag {
