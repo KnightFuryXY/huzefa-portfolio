@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sending...';
 
-        // Submit to Formspree via AJAX
+        // Submit to StaticForms via AJAX
         fetch(form.action, {
             method: "POST",
             body: formData,
@@ -325,18 +325,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Accept": "application/json"
             }
         })
-        .then(response => {
-            if (response.ok) {
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
                 successModal.classList.add('active');
                 form.reset();
             } else {
-                response.json().then(data => {
-                    if (Object.hasOwn(data, 'errors')) {
-                        alert(data["errors"].map(error => error["message"]).join(", "));
-                    } else {
-                        alert("Oops! There was a problem submitting your form. Please check your Formspree ID.");
-                    }
-                });
+                alert("Error: " + data.message);
             }
         })
         .catch((error) => {
