@@ -325,18 +325,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Accept": "application/json"
             }
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                // If status is not 200, it's a server error
+                throw new Error("Server Error " + response.status);
+            }
+            return response.json();
+        })
         .then(data => {
-            if (data.success) {
+            if (data && data.success) {
                 successModal.classList.add('active');
                 form.reset();
             } else {
-                alert("Error: " + data.message);
+                // Show the specific error message if it exists, otherwise a generic one
+                const errorMsg = data.message || data.error || "Unknown Error";
+                alert("Oops! " + errorMsg + "\n\nTip: Make sure you replaced YOUR_STATICFORMS_KEY with your actual key in the HTML file.");
             }
         })
         .catch((error) => {
             console.error("Form submission error:", error);
-            alert("Network Error: Please check your internet connection.");
+            alert("Connection Error. Please ensure you have pushed your new HTML code with your Access Key to GitHub.");
         })
         .finally(() => {
             submitBtn.disabled = false;
