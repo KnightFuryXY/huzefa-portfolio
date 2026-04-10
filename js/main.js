@@ -317,31 +317,31 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sending...';
 
-        // Submit to Formspree via AJAY
+        // Submit to Formspree via AJAX
         fetch(form.action, {
             method: "POST",
+            body: formData,
             headers: { 
-                "Content-Type": "application/json",
                 "Accept": "application/json"
-            },
-            body: JSON.stringify(Object.fromEntries(formData)),
+            }
         })
         .then(response => {
             if (response.ok) {
                 successModal.classList.add('active');
                 form.reset();
             } else {
-                // If it fails (e.g. wrong ID), we still show success for the demo
-                // but log the error
-                console.error("Formspree error:", response);
-                successModal.classList.add('active');
-                form.reset();
+                response.json().then(data => {
+                    if (Object.hasOwn(data, 'errors')) {
+                        alert(data["errors"].map(error => error["message"]).join(", "));
+                    } else {
+                        alert("Oops! There was a problem submitting your form. Please check your Formspree ID.");
+                    }
+                });
             }
         })
         .catch((error) => {
             console.error("Form submission error:", error);
-            successModal.classList.add('active');
-            form.reset();
+            alert("Network Error: Please check your internet connection.");
         })
         .finally(() => {
             submitBtn.disabled = false;
