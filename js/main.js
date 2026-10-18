@@ -13,6 +13,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // --- Content Protection: Prevent text selection drag, image dragging and image right-click ---
+    document.addEventListener('selectstart', (e) => {
+        if (!['INPUT', 'TEXTAREA'].includes(e.target.tagName)) {
+            e.preventDefault();
+        }
+    });
+
+    document.addEventListener('dragstart', (e) => {
+        e.preventDefault();
+    });
+
+    document.addEventListener('contextmenu', (e) => {
+        if (e.target.tagName === 'IMG' || e.target.closest('.hero-image, .portfolio-item, .image-wrapper')) {
+            e.preventDefault();
+        }
+    });
+
     // --- 2. Navbar Scroll Effect ---
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {

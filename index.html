@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=2">
 </head>
 
 <body>
@@ -308,30 +308,12 @@
                 </div>
                 <!-- We will use placeholders with cool tech styling -->
                 <div class="portfolio-grid">
-                    <!-- Featured Custom Alignment Project -->
-                    <div class="portfolio-item glass-panel reveal"
-                        style="grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; padding: 25px; margin-bottom: 20px;">
-                        <img src="porsche-gt3rs.png" class="portfolio-img" alt="Porsche GT3 RS Poster"
-                            style="flex: 1; min-width: 250px; max-width: 400px; object-fit: contain; border-radius: 12px; height: auto; margin: 0 auto; display: block;">
-                        <div class="portfolio-info" style="flex: 2; min-width: 280px; text-align: left; padding: 10px;">
-                            <h3 style="font-size: 2.2rem; color: var(--cyan); margin-bottom: 15px; font-weight: 700;">
-                                Porsche GT3 RS Poster</h3>
-                            <p
-                                style="font-size: 1.1rem; line-height: 1.6; color: var(--text-main); margin-bottom: 20px;">
-                                A high-impact promotional flyer featuring custom alignment and striking typography. This
-                                piece uses a vibrant green and subtle grey contrast to highlight detailed automotive
-                                specs, creating an aggressive, premium aesthetic typical of modern motorsport branding.
-                            </p>
-                            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                                <span
-                                    style="background: rgba(0, 240, 255, 0.1); border: 1px solid var(--cyan); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; color: var(--cyan);">Poster
-                                    Design</span>
-                                <span
-                                    style="background: rgba(0, 240, 255, 0.1); border: 1px solid var(--cyan); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; color: var(--cyan);">Typography</span>
-                                <span
-                                    style="background: rgba(0, 240, 255, 0.1); border: 1px solid var(--cyan); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; color: var(--cyan);">Vehicle
-                                    Branding</span>
-                            </div>
+                    <!-- Porsche GT3 RS Project -->
+                    <div class="portfolio-item glass-panel reveal">
+                        <img src="porsche-gt3rs.png" class="portfolio-img" alt="Porsche GT3 RS Poster" style="width: 100%; object-fit: cover; display: block; border-radius: 12px; height: 250px; margin-bottom: 20px;">
+                        <div class="portfolio-info">
+                            <h3>Porsche GT3 RS Poster</h3>
+                            <p>Dynamic Promotional Flyer Design</p>
                         </div>
                     </div>
 
@@ -538,11 +520,11 @@
                                     <span>+60 172167235</span>
                                 </div>
                             </a>
-                            <a href="https://instagram.com/huz3efa_" target="_blank" class="contact-item">
+                            <a href="https://instagram.com/huzefa.creative" target="_blank" class="contact-item">
                                 <div class="icon-box"><i class="fa-brands fa-instagram"></i></div>
                                 <div>
                                     <h4>Instagram</h4>
-                                    <span>@huz3efa_</span>
+                                    <span>@huzefa.creative</span>
                                 </div>
                             </a>
                         </div>
@@ -589,7 +571,7 @@
                         style="font-family: var(--font-heading); font-weight: 800; font-size: 0.9rem;">Fr</span></a>
                 <a href="https://www.guru.com/freelancers/huzefa-jamil-syed" target="_blank" title="Guru"><span
                         style="font-family: var(--font-heading); font-weight: 800; font-size: 0.9rem;">Gu</span></a>
-                <a href="https://instagram.com/huz3efa_" target="_blank" title="Instagram"><i
+                <a href="https://instagram.com/huzefa.creative" target="_blank" title="Instagram"><i
                         class="fa-brands fa-instagram"></i></a>
                 <a href="https://wa.me/60172167235" target="_blank" title="WhatsApp"><i
                         class="fa-brands fa-whatsapp"></i></a>
@@ -618,6 +600,48 @@
         <img class="lightbox-img" src="" alt="Full Screen Portfolio Image">
     </div>
 
+    <!-- Chatbot Widget -->
+    <div class="chatbot-container">
+        <!-- Floating Chat Bubble -->
+        <button class="chatbot-bubble" id="chatbotBubble" aria-label="Open Chat Assistant">
+            <i class="fa-solid fa-comments"></i>
+            <span class="chatbot-pulse"></span>
+        </button>
+
+        <!-- Chat Window -->
+        <div class="chatbot-window glass-panel" id="chatbotWindow">
+            <div class="chatbot-header">
+                <div class="chatbot-header-info">
+                    <div class="chatbot-avatar">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div>
+                        <h4>Huzefa's AI Assistant</h4>
+                        <span class="chatbot-status"><span class="status-dot"></span> Online</span>
+                    </div>
+                </div>
+                <button class="chatbot-close" id="chatbotClose" aria-label="Close Chat">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="chat-message bot">
+                    <div class="message-content">
+                        Hi! I'm Huzefa's virtual assistant. Ask me anything about my design services, pricing, skills, or how we can work together!
+                    </div>
+                </div>
+            </div>
+
+            <form class="chatbot-input-area" id="chatbotForm">
+                <input type="text" id="chatbotInput" placeholder="Ask me anything about my work..." required autocomplete="off">
+                <button type="submit" class="chatbot-send-btn" id="chatbotSend" aria-label="Send Message">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
     <!-- Form Success Modal -->
     <div class="form-success-overlay" id="formSuccessModal">
         <div class="form-success-card">
@@ -632,7 +656,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=2"></script>
+    <script src="js/chatbot.js"></script>
 </body>
 
 </html>
